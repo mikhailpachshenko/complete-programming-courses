@@ -1,4 +1,0 @@
-Шаблон запросов:
-**1) go test .**
-**2) go test -v -count=1 | or | -v -test=1 .**
-**3) go test -timeout 30s -run . | or | -timeout 30s -run ^TestHandler$**
