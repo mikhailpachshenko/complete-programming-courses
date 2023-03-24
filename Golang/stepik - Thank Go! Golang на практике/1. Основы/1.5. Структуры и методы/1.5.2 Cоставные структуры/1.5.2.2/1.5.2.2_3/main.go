@@ -14,7 +14,7 @@ type book struct {
 	author person
 }
 
-type gBook struct {
+type pBook struct {
 	title  string
 	author *person
 }
@@ -31,15 +31,12 @@ func main() {
 	}
 
 	someBook.author.firstName = "Igor"
-	fmt.Println(someBook.author)
+	fmt.Println(someBook, someBook.author)
 	fmt.Println(a)
-	fmt.Println("sB:", someBook)
 
-	b := person{"Kirill", "Khivincev"}
-
-	bBook := gBook{"Так совпало!", &b}
+	b := &person{"Kirill", "Khivincev"}
+	bBook := pBook{"Скорость", b}
 	bBook.author.firstName = "Nikita"
-	fmt.Println(bBook.author)
 	fmt.Println(b)
-	fmt.Println("bBook:", *bBook.author)
+	fmt.Println(bBook.title, *bBook.author)
 }
