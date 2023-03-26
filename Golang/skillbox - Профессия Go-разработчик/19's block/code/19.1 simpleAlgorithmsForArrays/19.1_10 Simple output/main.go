@@ -27,7 +27,7 @@ func minimum(input [size]int) int {
 }
 
 func main() {
-	arr := [5]int{2, 14, 8, 1, 90}
+	arr := [size]int{2, 14, 8, 1, 90}
 	fmt.Println(maximum(arr))
 	fmt.Println(minimum(arr))
 }
