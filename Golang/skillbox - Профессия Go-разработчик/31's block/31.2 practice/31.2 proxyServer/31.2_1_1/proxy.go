@@ -3,7 +3,7 @@ package main
 import (
 	"bytes"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"log"
 	"net/http"
 )
@@ -22,12 +22,12 @@ func main() {
 }
 
 func handlerProxy(w http.ResponseWriter, r *http.Request) {
-	textBytes, err := ioutil.ReadAll(r.Body)
+	textBytes, err := io.ReadAll(r.Body)
 	if err != nil {
 		log.Fatalln(err)
 	}
 	defer r.Body.Close()
-
+	fmt.Println("I:", textBytes, "string:", string(textBytes))
 	text := string(textBytes)
 
 	if counter == 0 {
@@ -36,13 +36,14 @@ func handlerProxy(w http.ResponseWriter, r *http.Request) {
 			log.Fatalln(err)
 		}
 		counter++
+		fmt.Println("II:", resp)
 
-		textBytes, err = ioutil.ReadAll(resp.Body)
+		textBytes, err = io.ReadAll(resp.Body)
 		if err != nil {
 			log.Fatalln(err)
 		}
 		defer resp.Body.Close()
-		fmt.Println(string(textBytes))
+		fmt.Println("III:", string(textBytes))
 		return
 	}
 	resp, err := http.Post(secondInstanceHost, "text/plain", bytes.NewBuffer([]byte(text)))
@@ -50,11 +51,12 @@ func handlerProxy(w http.ResponseWriter, r *http.Request) {
 		log.Fatalln(err)
 	}
 	counter--
+	fmt.Println("IIII:", resp)
 
-	textBytes, err = ioutil.ReadAll(resp.Body)
+	textBytes, err = io.ReadAll(resp.Body)
 	if err != nil {
 		log.Fatalln(err)
 	}
 	defer resp.Body.Close()
-	fmt.Println(string(textBytes))
+	fmt.Println("V:", string(textBytes))
 }

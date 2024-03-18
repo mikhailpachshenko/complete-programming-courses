@@ -1,0 +1,24 @@
+{
+    "store": {
+        "uI": {
+            "name": "Mike",
+            "age": 31,
+            "friends": []
+        },
+        "uII": {
+            "name": "Ni",
+            "age": 28,
+            "friends": []
+        },
+        "uIII": {
+            "name": "Kim",
+            "age": 119,
+            "friends": []
+        },
+        "uIIII": {
+            "name": "Slava",
+            "age": 0,
+            "friends": []
+        }
+    }
+}

@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -16,7 +16,7 @@ func TestHandler(t *testing.T) {
 		t.Fail()
 	}
 
-	textBytes, err := ioutil.ReadAll(resp.Body)
+	textBytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		t.Log(err)
 		t.Fail()
