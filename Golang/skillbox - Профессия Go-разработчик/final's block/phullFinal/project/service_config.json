@@ -1,0 +1,30 @@
+[
+    {
+        "service":"sms",
+        "source":"/Users/mikhailpachshenko/Desktop/phullFinal/simulator/skillbox-diploma/sms.data"
+    },
+    {
+        "service":"mms",
+        "source":"http://127.0.0.1:8383/mms"
+    },
+    {
+        "service":"voice",
+        "source":"/Users/mikhailpachshenko/Desktop/phullFinal/simulator/skillbox-diploma/voice.data"
+    },
+    {
+        "service":"email",
+        "source":"/Users/mikhailpachshenko/Desktop/phullFinal/simulator/skillbox-diploma/email.data"
+    },
+    {
+        "service":"billing",
+        "source":"/Users/mikhailpachshenko/Desktop/phullFinal/simulator/skillbox-diploma/billing.data"
+    },
+    {
+        "service":"support",
+        "source":"http://127.0.0.1:8383/support"
+    },
+    {
+        "service":"incident",
+        "source":"http://127.0.0.1:8383/accendent"
+    }
+]

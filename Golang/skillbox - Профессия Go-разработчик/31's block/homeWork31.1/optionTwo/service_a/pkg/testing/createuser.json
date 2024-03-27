@@ -1,0 +1,41 @@
+
+{
+    "users": [
+
+        {
+            "name":"Eugene",
+            "age":"41",
+            "friends":[]
+        },
+        {
+            "name":"Tanya",
+            "age":"41",
+            "friends":[]
+        },
+        {
+            "name":"Nikita",
+            "age":"1",
+            "friends":[]
+        },
+        {
+            "name":"Zlata",
+            "age":"16",
+            "friends":[]
+        },
+        {
+            "name":"Nastya",
+            "age":"8",
+            "friends":[]
+        },
+        {
+            "name":"Sveta",
+            "age":"45",
+            "friends":[]
+        },
+        {
+            "name":"Username_1",
+            "age":"25",
+            "friends":[]
+        }
+    ]
+}
