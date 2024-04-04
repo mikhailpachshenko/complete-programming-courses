@@ -54,15 +54,15 @@ func (us *UsersStorage) CreateUser(w http.ResponseWriter, r *http.Request) {
 		/* Запросы в БД */
 		pgQuery := `INSERT INTO "usersStore" ("name", "age", "friends") VALUES ($1, $2, '{}') RETURNING id`
 
-		var userID int64 // Инициализаия: переменная для хранения, созданного ID базой данных, при получении данных
-		if err = db.QueryRow(pgQuery, u.Name, u.Age).Scan(&userID); err != nil {
+		/* var userID int64 // Инициализаия: переменная для хранения, созданного ID базой данных, при получении данных */
+		if err = db.QueryRow(pgQuery, u.Name, u.Age).Scan(&u.ID); err != nil {
 			log.Fatalln()
 		}
 		/* Тело ответа о положительном результате */
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusCreated)
-		w.Write([]byte("User has been created\nID = " + fmt.Sprint(userID) + " " + fmt.Sprint(u.Name) + "\n"))
-		log.Print("\nUser has been created\nID = " + fmt.Sprint(userID) + " " + fmt.Sprint(u.Name) + "\n")
+		w.Write([]byte("User has been created\nID = " + fmt.Sprint(u.ID) + " " + fmt.Sprint(u.Name) + "\n"))
+		log.Print("\nUser has been created\nID = " + fmt.Sprint(u.ID) + " " + fmt.Sprint(u.Name) + "\n")
 		return
 	}
 	w.WriteHeader(http.StatusBadRequest)
