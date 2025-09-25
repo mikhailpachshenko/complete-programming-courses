@@ -8,15 +8,14 @@
 
 ------
 
-### Config
+### Config  
 
-1. Установка *Git*:
-   - `brew install git`
-     (*Через Homebrew*)  
-2. Создаём директории:
-   - `mkdir -p ~/Documents/git-repositories/{personal,work}`  
-3. Создаём и записываем базовый *(global-default)* – *.gitconfig`*
-   - `nano ~/.gitconfig`  
+1. Установка *Git*:  
+`brew install git`
+2. Создаём директории:  
+`mkdir -p ~/Documents/git-repositories/{personal,work}`  
+3. Создаём и записываем базовый *(global-default)* – *.gitconfig*  
+`nano ~/.gitconfig`  
 ```ini
 [user]
    name = AnyName
@@ -29,8 +28,8 @@
    path = ~/.gitconfig-personal
 ```
 
-4. Создаём отдельные *.config* под каждую директорию
-   - `nano ~/.gitconfig-work` and `nano ~/.gitconfig-personal`  
+4. Создаём отдельные *.config* под каждую директорию  
+`nano ~/.gitconfig-work` and `nano ~/.gitconfig-personal`  
 ```ini
 [user]
    name = AnyName
@@ -38,7 +37,6 @@
 ```
 
 ------
-
 ### SSH
 
 1. Создать ключи — *ed25519*:
@@ -49,16 +47,15 @@ ssh-keygen -t ed25519 -C "any@company.com" -f ~/.ssh/id_ed25519_work
 # персональный
 ssh-keygen -t ed25519 -C "any.personal@example.com" -f ~/.ssh/id_ed25519_personal
 ```
-(где: `-t` – тип ключа | `-С` – комментарий | `-f` – дать своё имя ключу – *path/anyName*)
-(так же можно добавить: `-N` – для ввода кодового слова под ключ – *passphrase*)
+(где: `-t` – тип ключа | `-С` – комментарий | `-f` – дать своё имя ключу – *path/anyName*)  
+(так же можно добавить: `-N` – для ввода кодового слова под ключ – *passphrase*)  
 
-Добавятся файлы:
-- *~/.ssh/id_ed25519_work* и *~/.ssh/id_ed25519_work.pub*
-- *~/.ssh/id_ed25519_personal* и *~/.ssh/id_ed25519_personal.pub*
+Добавятся файлы:  
+- *~/.ssh/id_ed25519_work* и *~/.ssh/id_ed25519_work.pub*  
+- *~/.ssh/id_ed25519_personal* и *~/.ssh/id_ed25519_personal.pub*  
 
-2. Добавляем в _ssh-agent_
-(_macOS_ — есть особые опции для _keychain_):
-
+2. Добавляем в _ssh-agent_  
+(_macOS_ — есть особые опции для _keychain_):  
 ```bash
 # старт (если агент ещё не запущен)
 eval "$(ssh-agent -s)"
@@ -88,12 +85,12 @@ pbcopy < ~/.ssh/id_ed25519_personal.pub
    2. В настройки / *Settings*  
    3. *SSH* and *GPA* key  
    4. Создаем новые ключи  
-   5. Дать описательное имя (например: "*MacBook Pro - Personal*")
-   6. В графу ключ вносим данные полученные при помощи команды в терминале либо 3 пункт:
+   5. Дать описательное имя (например: "*MacBook Pro - Personal*")  
+   6. В графу ключ вносим данные полученные при помощи команды в терминале либо 3 пункт:  
         - `cat ~/.ssh/id_ed25519_personal.pub`
         - `cat ~/.ssh/id_ed25519_work.pub`
 
-4. Прописать *~/.ssh/config* с алиасами (пример для *GitHub* — аналогично для GitLab):
+5. Прописать *~/.ssh/config* с алиасами (пример для *GitHub* — аналогично для GitLab):  
 `nano ~/.ssh/config`
 ```ini
 # ~/.ssh/config
@@ -116,11 +113,13 @@ Host github-personal
 ```
 
 ------
+### Дополнительно
 
-#### Практическое использование
+------
 
-Варианты правильного вызова команды _git clone_ под разные директории после настройки
+#### Практическое использование  
 
+Варианты правильного вызова команды _git clone_ под разные директории после настройки  
 ```bash
 # клонируем рабочий реп в нужную папку
 git clone git@github-work:company/repo.git ~/Documents/git-repositories/work/repo
@@ -175,18 +174,16 @@ eval "$(ssh-agent -s)"
 
 ------
 
->[!NOTE]
->**Важно:** Локальная конфигурация (`.git/config`) имеет приоритет над глобальной. Если в проекте уже есть настройки, используйте `git config --local user.email "..."` для переопределения.
-
-------
-
-### Config & SSH | Теория 
+### Config & SSH | Теория и примечания
 
 **ssh-agent** — это программа-демон, которая хранит приватные SSH-ключи в памяти и по запросу подсовывает их клиенту ssh или другим программам.
 _Вместо того чтобы каждый раз вводить парольную фразу для ключа, можно один раз загрузить ключ в агент, и дальше соединения будут использоваться прозрачно._  
 
 **Keychain** — это системное хранилище паролей и сертификатов.
 _macOS может запомнить парольную фразу от SSH-ключа в Keychain и автоматически подгружать ключ в ssh-agent при входе в систему._  
+
+>[!NOTE]
+>**Важно:** Локальная конфигурация (`.git/config`) имеет приоритет над глобальной. Если в проекте уже есть настройки, используйте `git config --local user.email "..."` для переопределения.
 
 ------
 
